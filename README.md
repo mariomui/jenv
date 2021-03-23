@@ -173,6 +173,7 @@ Our goal is to have both the latest version of Java and JDK 8 installed at the s
 
 We'll resume where we left off with Java 11.0.2 installed. Let's [install Java 8](https://stackoverflow.com/questions/24342886/how-to-install-java-8-on-mac) now:
 
+
 ```bash
 brew install --cask adoptopenjdk8
 brew install --cask caskroom/versions/adoptopenjdk8
@@ -203,6 +204,31 @@ $ jenv versions
   openjdk64-11.0.2
   oracle64-1.8.0.202-ea
 ```
+
+#### 2.1.2 Using Two JVMs on macOS using Temurin
+
+Install 11 and Latest JDK
+```bash
+brew install --cask temurin11
+brew install --cask temurin
+```
+
+Confirm JDK VM names.
+```bash
+$ ls -1 /Library/Java/JavaVirtualMachines 
+temurin-11.jdk
+temurin-16.jdk
+```
+
+```bash
+$ jenv add /Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/
+$ jenv add /Library/Java/JavaVirtualMachines/temurin-16.jdk/Contents/Home/
+```
+NOTE:
+IntelliJ CE does have a bit of trouble detecting temurin.
+It might be wise to install both.
+* 11 Installed by AdoptOpenJDK
+* 11.0.12 Installed by Temurin <-- the XX.X.X2 suffix.
 
 #### 2.2 Other Workflows
 
