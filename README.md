@@ -204,27 +204,31 @@ $ jenv versions
   openjdk64-11.0.2
   oracle64-1.8.0.202-ea
 ```
-#### 2.1.2 Using Two JVMs on macOS using brew version 3.0+ 
-Cask locations have changed.
+#### 2.1.2 Using Two JVMs on macOS using Temurin
 
-Install latest JDK
+
+Install 11 and Latest JDK
 ```bash
-brew tap homebrew/cask
-brew install brew-cask-completion
-brew tap adoptopenjdk/openjdk
-brew install --cask adoptopenjdk
-jenv add $(/usr/libexec/java_home)
+brew install --cask temurin11
+brew install --cask temurin
 ```
 
-Install another JDK
-
+Confirm JDK VM names.
 ```bash
-brew install --cask adoptopenjdk14
-jenv add $(/usr/libexec/java_home -v14)
+$ ls -1 /Library/Java/JavaVirtualMachines 
+temurin-11.jdk
+temurin-16.jdk
 ```
 
-open another terminal.
-
+```bash
+$ jenv add /Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/
+$ jenv add /Library/Java/JavaVirtualMachines/temurin-16.jdk/Contents/Home/
+```
+NOTE:
+IntelliJ CE does have a bit of trouble detecting temurin.
+It might be wise to install both.
+* 11 Installed by AdoptOpenJDK
+* 11.0.12 Installed by Temurin <-- the XX.X.X2 suffix.
 #### 2.2 Other Workflows
 
 Please contribute your own using a pull request!
